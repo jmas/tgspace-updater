@@ -44,19 +44,19 @@ const updateChannelInfo = async (tgChannelId, channelId) => {
     context: {
       tgChannelId,
     },
-    target: "`https://t.me/${$c.tgChannelId}`",
+    target: "`https://t.me/s/${$c.tgChannelId}`",
     parse: [
       {
         key: "title",
-        pick: [".tgme_page_title", "content"],
+        pick: [".tgme_channel_info_header_title", "content"],
       },
       {
         key: "image",
-        pick: [".tgme_page_photo_image", "attr", "src"],
+        pick: [".tgme_page_photo_image img", "attr", "src"],
       },
       {
         key: "description",
-        pick: [".tgme_page_description", "content"],
+        pick: [".tgme_channel_info_description", "content"],
       },
     ],
   });
