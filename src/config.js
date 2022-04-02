@@ -13,7 +13,7 @@ const supabase = createClient(
   process.env.SUPABASE_KEY
 );
 
-const config = require("../config.json"); //JSON.parse(process.env.CONFIG);
+const config = JSON.parse(process.env.CONFIG);
 
 const fetchChannelCount = parseInt(process.env.FETCH_CHANNELS_COUNT, 10) || 5;
 
