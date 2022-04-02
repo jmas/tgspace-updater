@@ -1,0 +1,16 @@
+{
+  "name": "tgspace-updater",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "1.31.1",
+    "tgspace-parser": "1.6.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
