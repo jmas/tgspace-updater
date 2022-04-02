@@ -124,6 +124,8 @@ const run = async () => {
       },
     };
 
+    let insertCount = 0;
+
     // Parse and insert new messages
     for await (let { before, messages, lastPublishedAt } of parseByConfig(
       parseConfig
@@ -136,36 +138,41 @@ const run = async () => {
         voices,
         publishedAt,
       } of messages) {
-        const media = [
-          ...images.map((image) => {
-            return {
-              type: "image",
-              ...image,
-            };
-          }),
-          ...videos.map((video) => {
-            return {
-              type: "video",
-              ...video,
-            };
-          }),
-          ...voices.map((voice) => {
-            return {
-              type: "voice",
-              ...voice,
-            };
-          }),
-        ];
+        if (new Date(publishedAt) > new Date(lastPublishedAt)) {
+          const media = [
+            ...images.map((image) => {
+              return {
+                type: "image",
+                ...image,
+              };
+            }),
+            ...videos.map((video) => {
+              return {
+                type: "video",
+                ...video,
+              };
+            }),
+            ...voices.map((voice) => {
+              return {
+                type: "voice",
+                ...voice,
+              };
+            }),
+          ];
 
-        await insertMessage({
-          tgMessageId,
-          channelId,
-          message,
-          publishedAt,
-          media,
-        });
+          await insertMessage({
+            tgMessageId,
+            channelId,
+            message,
+            publishedAt,
+            media,
+          });
+
+          insertCount++;
+        }
       }
 
+      console.info(`${prefix} insertCount: ${insertCount}`);
       console.info(`${prefix} before: ${before}`);
       console.info(`${prefix} messages.length: ${messages.length}`);
       console.info(`${prefix} lastPublishedAt: ${lastPublishedAt}`);
