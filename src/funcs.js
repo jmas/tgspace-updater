@@ -108,7 +108,7 @@ const run = async () => {
     const prefix = `[${tgChannelId}]`;
 
     console.log(
-      `${prefix} START: tgChannelI: ${tgChannelId} channelId: ${channelId}`
+      `${prefix} START: tgChannelId: ${tgChannelId} channelId: ${channelId}`
     );
 
     // Parse and update channel info
