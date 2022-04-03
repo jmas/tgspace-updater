@@ -72,7 +72,7 @@ const updateChannelInfo = async (tgChannelId, channelId) => {
     .match({ id: channelId });
 
   if (error) {
-    console.trace(`Update channels error (${channelId}): `, error);
+    console.trace(error);
     throw error;
   }
 };
@@ -94,7 +94,7 @@ const insertMessage = async ({
   });
 
   if (error) {
-    console.trace(`Update channels error (${channelId}): `, error);
+    console.trace(error);
     throw error;
   }
 };
@@ -140,24 +140,18 @@ const run = async () => {
       } of messages) {
         if (new Date(publishedAt) > new Date(lastPublishedAt)) {
           const media = [
-            ...images.map((image) => {
-              return {
-                type: "image",
-                ...image,
-              };
-            }),
-            ...videos.map((video) => {
-              return {
-                type: "video",
-                ...video,
-              };
-            }),
-            ...voices.map((voice) => {
-              return {
-                type: "voice",
-                ...voice,
-              };
-            }),
+            ...images.map((image) => ({
+              type: "image",
+              ...image,
+            })),
+            ...videos.map((video) => ({
+              type: "video",
+              ...video,
+            })),
+            ...voices.map((voice) => ({
+              type: "voice",
+              ...voice,
+            })),
           ];
 
           await insertMessage({
