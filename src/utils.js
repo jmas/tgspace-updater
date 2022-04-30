@@ -65,10 +65,12 @@ const detectLang = (text) => {
 };
 
 const requireConfig = (name) => {
-  const path = `./${name}.config.json`;
+  if (process.env.CONFIG_ROOT) {
+    const path = `${process.env.CONFIG_ROOT}/${name}.config.json`;
 
-  if (fs.existsSync(path)) {
-    return require(path);
+    if (fs.existsSync(path)) {
+      return require(path);
+    }
   }
 
   const envVarName = `CONFIG_${name}`.toUpperCase();

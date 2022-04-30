@@ -9,7 +9,17 @@ const run = async (overallRunTimeLimit = 300000) => {
     .from("channel")
     .select("id, name, tg_id")
     .order("updated_at", { ascending: true })
-    .limit(100);
+    .limit(20);
+
+  await supabase
+    .from("channels")
+    .update({
+      updated_at: "now()",
+    })
+    .in(
+      "id",
+      channels.map(({ id }) => id)
+    );
 
   let overallRunTime = 0;
 

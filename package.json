@@ -5,13 +5,14 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "dotenv -c -- node ./src/index.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "1.31.1",
-    "languagedetect": "^2.0.0",
+    "languagedetect": "2.0.0",
     "tgspace-parser": "1.7.4",
-    "words-count": "^2.0.2"
+    "words-count": "2.0.2",
+    "dotenv-cli": "5.1.0"
   },
   "author": "",
   "license": "ISC"
