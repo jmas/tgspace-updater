@@ -19,5 +19,5 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          CONFIG: ${{ secrets.CONFIG }}
-          FETCH_CHANNELS_COUNT: ${{ secrets.FETCH_CHANNELS_COUNT }}
+          CONFIG_CHANNEL_INFO: ${{ secrets.CONFIG_CHANNEL_INFO }}
+          CONFIG_CHANNEL_FEED: ${{ secrets.CONFIG_CHANNEL_FEED }}

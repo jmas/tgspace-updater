@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "1.31.1",
-    "tgspace-parser": "1.6.0"
+    "languagedetect": "^2.0.0",
+    "tgspace-parser": "1.7.4",
+    "words-count": "^2.0.2"
   },
   "author": "",
   "license": "ISC"
