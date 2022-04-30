@@ -4,12 +4,12 @@ const {
   parseAndUpdateChannelFeed,
 } = require("./channel");
 
-const run = async (overallRunTimeLimit = 300000) => {
+const run = async (overallRunTimeLimit = 300000, channelsLimit = 20) => {
   const { data: channels } = await supabase
     .from("channel")
     .select("id, name, tg_id")
     .order("updated_at", { ascending: true })
-    .limit(20);
+    .limit(channelsLimit);
 
   await supabase
     .from("channels")
@@ -51,4 +51,7 @@ const run = async (overallRunTimeLimit = 300000) => {
   console.log(`Finished. Overall run time: ${overallRunTime} msec`);
 };
 
-run(process.env.OVERALL_RUN_TIME_LIMIT || 300000);
+run(
+  parseInt(process.env.OVERALL_RUN_TIME_LIMIT || 300000, 10),
+  parseInt(process.env.CHANNELS_LIMIT || 20, 10)
+);

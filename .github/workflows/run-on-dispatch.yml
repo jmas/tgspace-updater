@@ -25,3 +25,5 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           CONFIG_CHANNEL_INFO: ${{ secrets.CONFIG_CHANNEL_INFO }}
           CONFIG_CHANNEL_FEED: ${{ secrets.CONFIG_CHANNEL_FEED }}
+          OVERALL_RUN_TIME_LIMIT: ${{ secrets.OVERALL_RUN_TIME_LIMIT }}
+          CHANNELS_LIMIT: ${{ secrets.CHANNELS_LIMIT }}
