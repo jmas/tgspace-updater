@@ -24,7 +24,11 @@ const convertToFullNumber = (str) => {
   const [, num, multiplier] = str.match(/(\d*(?:\.\d+)?)(\w)?/);
   return (
     parseFloat(num) *
-    (multiplier === "K" ? 1000 : multiplier === "M" ? 1000000 : 1)
+    (multiplier && multiplier.toUpperCase() === "K"
+      ? 1000
+      : multiplier && multiplier.toUpperCase() === "M"
+      ? 1000000
+      : 1)
   );
 };
 
