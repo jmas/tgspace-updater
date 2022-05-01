@@ -88,7 +88,7 @@ const parseAndUpdateChannelInfo = async (channelId) => {
       await supabase
         .from("channel")
         .update({
-          name: title,
+          name: title || `@${tgChannelId}`,
           description,
           verified: Boolean(verified),
           updated_at: "now()",
